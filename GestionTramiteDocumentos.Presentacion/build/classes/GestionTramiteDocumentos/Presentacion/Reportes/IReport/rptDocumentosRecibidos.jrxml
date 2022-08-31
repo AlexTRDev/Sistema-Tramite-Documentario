@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptDocumentosRecibidos" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="606a87f8-295d-450a-bf38-04d6789d3281">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="unidadTramite" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nombreUnidad" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechaInicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechaFin" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select r.fecha_hora_recepcion, d.numero_expediente, t.nombre, d.de, r.tipo_expediente
+from ruta r join documento_recibido d on (r.id_documento_recibido = d.id_documento_recibido)
+join tipo_documento t on (d.id_tipo_documento = t.id_tipo_documento)
+where r.id_unidad_tramite = $P{unidadTramite}
+order by r.fecha_hora_recepcion asc;]]>
+	</queryString>
+	<field name="fecha_hora_recepcion" class="java.sql.Timestamp"/>
+	<field name="numero_expediente" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="de" class="java.lang.String"/>
+	<field name="tipo_expediente" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="150" splitType="Stretch">
+			<staticText>
+				<reportElement x="45" y="130" width="89" height="20" uuid="eaf7118a-8a31-43c2-9c48-5898b8d47133"/>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[F.Recepcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="134" y="130" width="111" height="20" uuid="4a01ecd9-aec0-42cc-8623-1979cd95eee5"/>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº de expediente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="245" y="130" width="113" height="20" uuid="c758c27f-8e6a-466a-88bd-211238f58d74"/>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Documento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="130" width="253" height="20" uuid="17e5784d-de06-45d7-928a-98a522b634de"/>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="611" y="130" width="191" height="20" uuid="61b47433-78df-4558-acc4-eb8e57a29c92"/>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de tramite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="11" width="319" height="51" uuid="0196007b-4611-478c-9bce-27ba83fb5640"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Documentos Recibidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="130" width="45" height="20" uuid="60006038-108f-4234-8127-e5dc9a33cdee"/>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="72" width="102" height="20" uuid="332cedf1-8815-4365-bc85-af043a60b841"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unidad de tramite:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="92" width="102" height="20" uuid="99e9f4ad-56ee-4d7c-a1d5-2595a11da2fb"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de recepcion:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="672" y="20" width="43" height="15" uuid="1d361710-61ff-4a23-9349-c16cbe1b1b6f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="672" y="35" width="43" height="15" uuid="166f30ef-959a-49fe-aa68-b362e2bcdf8a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="672" y="50" width="43" height="15" uuid="c91c8eea-f5d1-4352-883f-4c6cc4a7a17a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pagina:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="715" y="20" width="66" height="15" uuid="adf581fe-ab5f-47a0-8c38-5ba50d4429dd"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH.mm.ss">
+				<reportElement x="715" y="35" width="66" height="15" uuid="2048c6b3-1135-4f1a-8c8f-d09caa1b90fd"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="715" y="50" width="15" height="13" uuid="46a43c8f-d1c9-4526-b872-4f39895801f0"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="730" y="50" width="13" height="13" uuid="9776fe67-82a2-41e3-8413-6da0f7807625"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[de]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="743" y="50" width="15" height="13" uuid="85a22c07-f4df-4dc7-8f50-b683e35c7c44"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="118" y="72" width="240" height="20" uuid="9aacc641-6ccc-45d5-934e-b73a88ca61f6"/>
+				<textFieldExpression><![CDATA[$P{nombreUnidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="205" y="92" width="80" height="20" uuid="e796b639-62e6-4da1-b1db-96fb699cd5bc"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{fechaFin}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="192" y="92" width="13" height="20" uuid="9b62a276-681c-415a-8645-376fa32bd5f0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="118" y="92" width="74" height="20" uuid="2787183f-9489-4aec-b0cd-89e9b1b92f31"/>
+				<textFieldExpression><![CDATA[$P{fechaInicio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="45" y="0" width="89" height="20" uuid="0bd508ef-4361-4ea6-9061-1b8b9287e340"/>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{fecha_hora_recepcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="0" width="111" height="20" uuid="d178a6d7-47e6-437e-adf6-79b6f4e2c54d"/>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{numero_expediente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="0" width="113" height="20" uuid="ed29b93e-43fa-4a24-922d-f05a400c3aba"/>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="0" width="253" height="20" uuid="d92e6573-2d75-4abd-a354-66826bcfd345"/>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{de}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="611" y="0" width="191" height="20" uuid="4e6e41bd-b74c-432b-97f9-d9b6c3c7a5cf"/>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{tipo_expediente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="45" height="20" uuid="94c866a6-8ce0-432f-954d-3ace01adf577"/>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

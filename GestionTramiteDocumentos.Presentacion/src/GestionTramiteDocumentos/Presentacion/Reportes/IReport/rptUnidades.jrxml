@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptUnidades" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b150d14a-7709-4b8a-b9a8-117b59d6a6d6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="unidadTramite" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select abreviatura, responsable
+from unidad_tramite;]]>
+	</queryString>
+	<field name="abreviatura" class="java.lang.String"/>
+	<field name="responsable" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<staticText>
+				<reportElement x="142" y="23" width="309" height="34" uuid="84b08e4b-d1f5-4160-a8fe-991ad443442b"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIDADES DE TRAMITE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="42" y="82" width="146" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="eea19d6d-07d9-432e-ae30-f311e5243e05"/>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ABREVIATURA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="188" y="82" width="302" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="232770d7-4143-44d5-ae8f-c804739d9463"/>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESPONSABLE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="42" y="0" width="146" height="20" uuid="87904ee4-2e51-4ab6-a562-0c2e3bc10c3c"/>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{abreviatura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="0" width="302" height="20" uuid="b36de1f1-a307-4334-8476-ceab249abb7f"/>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{responsable}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
